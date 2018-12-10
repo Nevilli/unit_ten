@@ -10,6 +10,7 @@ PURPLE = (255, 0, 255)
 SPACE = 5
 HEIGHT = 20
 x_number_bricks = 9
+colors = [RED, BLUE, GOLD, PURPLE, GREEN]
 
 
 pygame.init()
@@ -21,10 +22,16 @@ WIDTH = (500 - (x_number_bricks * SPACE))/x_number_bricks
 x = 0
 y = 250 - HEIGHT
 
-for b in range(x_number_bricks):
-    bricks = brick.Brick(WIDTH, HEIGHT, GREEN, main_surface)
-    bricks.draw_brick(x, y)
-    pygame.display.update()
+for q in range(5):
+    x = (WIDTH + SPACE) * q
+    color = colors[q]
+    for b in range(x_number_bricks):
+        bricks = brick.Brick(WIDTH, HEIGHT, GREEN, main_surface)
+        bricks.draw_brick(x, y)
+        x = x + WIDTH + SPACE
+        pygame.display.update()
+    x_number_bricks = x_number_bricks - 2
+    y = y - HEIGHT - SPACE
 
 
 while True:
